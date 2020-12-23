@@ -19,8 +19,8 @@ usbapi = "0.2.1"
 tokio-udev = "0.3.0"
 futures-util = "0.3.8"
 tokio = { version = "0.3.6", features = ["macros", "rt-multi-thread"] }
-protobuf = "2.18.1"
-tls-api = "0.4.0"
+bytes = "1.0.0"
+prost = "0.6"
 
 [build-dependencies]
-protobuf-codegen-pure = "2.18.1"
+prost-build = "0.6.1"

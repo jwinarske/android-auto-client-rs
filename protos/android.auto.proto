@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package android.auto.headunit.proto;
+package android.auto.proto;
 
 message AudioFocusState
 {
@@ -337,8 +337,8 @@ message VideoFPS
   enum Enum
   {
     NONE = 0;
-    _30 = 1;
-    _60 = 2;
+    FPS_30 = 1;
+    FPS_60 = 2;
   }
 }
 
@@ -347,9 +347,9 @@ message VideoResolution
   enum Enum
   {
     NONE = 0;
-    _480p = 1;
-    _720p = 2;
-    _1080p = 3;
+    RES_480p = 1;
+    RES_720p = 2;
+    RES_1080p = 3;
   }
 }
 

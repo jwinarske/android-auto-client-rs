@@ -12,6 +12,11 @@ use byteorder::{ByteOrder, LittleEndian};
 #[macro_use]
 extern crate log;
 
+// Include the `items` module, which is generated from items.proto.
+pub mod items {
+    include!(concat!(env!("OUT_DIR"), "/android.auto.proto.rs"));
+}
+
 const ACC_REQ_GET_PROTOCOL: u8 = 51;
 const ACC_REQ_SEND_STRING: u8 = 52;
 const ACC_REQ_START: u8 = 53;
