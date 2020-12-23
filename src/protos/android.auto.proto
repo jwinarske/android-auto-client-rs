@@ -1,0 +1,807 @@
+syntax = "proto3";
+
+package android.auto.headunit.proto;
+
+message AudioFocusState
+{
+  enum Enum
+  {
+    NONE = 0;
+    GAIN = 1;
+    GAIN_TRANSIENT = 2;
+    LOSS = 3;
+    LOSS_TRANSIENT_CAN_DUCK = 4;
+    LOSS_TRANSIENT = 5;
+    GAIN_MEDIA_ONLY = 6;
+    GAIN_TRANSIENT_GUIDANCE_ONLY = 7;
+  }
+}
+
+message AudioFocusType
+{
+  enum Enum
+  {
+    NONE = 0;
+    GAIN = 1;
+    GAIN_TRANSIENT = 2;
+    GAIN_NAVI = 3;
+    RELEASE = 4;
+  }
+}
+
+message AudioType
+{
+  enum Enum
+  {
+    NONE = 0;
+    SPEECH = 1;
+    SYSTEM = 2;
+    MEDIA = 3;
+    ALARM = 4;
+  }
+}
+
+message AVChannelMessage
+{
+  enum Enum
+  {
+    AV_MEDIA_WITH_TIMESTAMP_INDICATION = 0x0000;
+    AV_MEDIA_INDICATION = 0x0001;
+    SETUP_REQUEST = 0x8000;
+    START_INDICATION = 0x8001;
+    STOP_INDICATION = 0x8002;
+    SETUP_RESPONSE = 0x8003;
+    AV_MEDIA_ACK_INDICATION = 0x8004;
+    AV_INPUT_OPEN_REQUEST = 0x8005;
+    AV_INPUT_OPEN_RESPONSE = 0x8006;
+    VIDEO_FOCUS_REQUEST = 0x8007;
+    VIDEO_FOCUS_INDICATION = 0x8008;
+  }
+}
+
+message AVChannelSetupStatus
+{
+  enum Enum
+  {
+    NONE = 0;
+    FAIL = 1;
+    OK = 2;
+  }
+}
+
+message AVStreamType
+{
+  enum Enum
+  {
+    NONE = 0;
+    AUDIO = 1;
+    VIDEO = 3;
+  }
+}
+
+message BluetoothChannelMessage
+{
+  enum Enum
+  {
+    NONE = 0x0000;
+    PAIRING_REQUEST = 0x8001;
+    PAIRING_RESPONSE = 0x8002;
+    AUTH_DATA = 0x8003;
+  }
+}
+
+message BluetoothPairingMethod
+{
+  enum Enum
+  {
+    NONE = 0;
+    UNK_1 = 1;
+    A2DP = 2;
+    UNK_3 = 3;
+    HFP = 4;
+  }
+}
+
+message BluetoothPairingStatus
+{
+  enum Enum
+  {
+    NONE = 0;
+    OK = 1;
+    FAIL = 2;
+  }
+}
+
+message ButtonCode
+{
+  enum Enum
+  {
+    NONE = 0x00;
+    MICROPHONE_2 = 0x01;
+    MENU = 0x02;
+    HOME = 0x03;
+    BACK = 0x04;
+    PHONE = 0x05;
+    CALL_END = 0x06;
+    UP = 0x13;
+    DOWN = 0x14;
+    LEFT = 0x15;
+    RIGHT = 0x16;
+    ENTER = 0x17;
+    MICROPHONE_1 = 0x54;
+    TOGGLE_PLAY = 0x55;
+    NEXT = 0x57;
+    PREV = 0x58;
+    PLAY = 0x7E;
+    PAUSE = 0x7F;
+    SCROLL_WHEEL = 65536;
+  }
+}
+
+message ControlMessage
+{
+  enum Enum
+  {
+    NONE = 0x0000;
+    VERSION_REQUEST = 0x0001;
+    VERSION_RESPONSE = 0x0002;
+    SSL_HANDSHAKE = 0x0003;
+    AUTH_COMPLETE = 0x0004;
+    SERVICE_DISCOVERY_REQUEST = 0x0005;
+    SERVICE_DISCOVERY_RESPONSE = 0x0006;
+    CHANNEL_OPEN_REQUEST = 0x0007;
+    CHANNEL_OPEN_RESPONSE = 0x0008;
+    PING_REQUEST = 0x000b;
+    PING_RESPONSE = 0x000c;
+    NAVIGATION_FOCUS_REQUEST = 0x000d;
+    NAVIGATION_FOCUS_RESPONSE = 0x000e;
+    SHUTDOWN_REQUEST = 0x000f;
+    SHUTDOWN_RESPONSE = 0x0010;
+    VOICE_SESSION_REQUEST = 0x0011;
+    AUDIO_FOCUS_REQUEST = 0x0012;
+    AUDIO_FOCUS_RESPONSE = 0x0013;
+  }
+}
+
+message DrivingStatus
+{
+  enum Enum
+  {
+    UNRESTRICTED = 0;
+    NO_VIDEO = 1;
+    NO_KEYBOARD_INPUT = 2;
+    NO_VOICE_INPUT = 4;
+    NO_CONFIG = 8;
+    LIMIT_MESSAGE_LEN = 16;
+    FULLY_RESTRICTED = 31;
+  }
+
+  int32 status = 1;
+}
+
+message Gear
+{
+  enum Enum
+  {
+    NEUTRAL = 0;
+    FIRST = 1;
+    SECOND = 2;
+    THIRD = 3;
+    FOURTH = 4;
+    FIFTH = 5;
+    SIXTH = 6;
+    SEVENTH = 7;
+    EIGHTH = 8;
+    NINTH = 9;
+    TENTH = 10;
+    DRIVE = 100;
+    PARK = 101;
+    REVERSE = 102;
+  }
+
+  Gear.Enum gear = 1;
+}
+
+message HeadlightStatus
+{
+  enum Enum
+  {
+    STATE_0 = 0;
+    STATE_1 = 1;
+    STATE_2 = 2;
+    STATE_3 = 3;
+  }
+}
+
+message IndicatorStatus
+{
+  enum Enum
+  {
+    STATE_0 = 0;
+    STATE_1 = 1;
+    STATE_2 = 2;
+    STATE_3 = 3;
+  }
+}
+
+message InputChannelMessage
+{
+  enum Enum
+  {
+    NONE = 0x0000;
+    INPUT_EVENT_INDICATION = 0x8001;
+    BINDING_REQUEST = 0x8002;
+    BINDING_RESPONSE = 0x8003;
+  }
+}
+
+message SensorChannelMessage
+{
+  enum Enum
+  {
+    NONE = 0x0000;
+    SENSOR_START_REQUEST = 0x8001;
+    SENSOR_START_RESPONSE = 0x8002;
+    SENSOR_EVENT_INDICATION = 0x8003;
+  }
+}
+
+message SensorType
+{
+  enum Enum
+  {
+    NONE = 0;
+    LOCATION = 1;
+    COMPASS = 2;
+    CAR_SPEED = 3;
+    RPM = 4;
+    ODOMETER = 5;
+    FUEL_LEVEL = 6;
+    PARKING_BRAKE = 7;
+    GEAR = 8;
+    DIAGNOSTICS = 9;
+    NIGHT_DATA = 10;
+    ENVIRONMENT = 11;
+    HVAC = 12;
+    DRIVING_STATUS = 13;
+    DEAD_RECKONING = 14;
+    PASSENGER = 15;
+    DOOR = 16;
+    LIGHT = 17;
+    TIRE = 18;
+    ACCEL = 19;
+    GYRO = 20;
+    GPS = 21;
+  }
+}
+
+message ShutdownReason
+{
+  enum Enum
+  {
+    NONE = 0;
+    QUIT = 1;
+  }
+}
+
+message Status
+{
+  enum Enum
+  {
+    OK = 0;
+    FAIL = 1;
+  }
+}
+
+message TouchAction
+{
+  enum Enum
+  {
+    PRESS = 0;
+    RELEASE = 1;
+    DRAG = 2;
+  }
+}
+
+message VersionResponseStatus
+{
+  enum Enum
+  {
+    MATCH = 0;
+    MISMATCH = 0xFFFF;
+  }
+}
+
+message VideoFocusMode
+{
+  enum Enum
+  {
+    NONE = 0;
+    FOCUSED = 1;
+    UNFOCUSED = 2;
+  }
+}
+
+message VideoFocusReason
+{
+  enum Enum
+  {
+    NONE = 0;
+    UNK_1 = 1;
+    UNK_2 = 2;
+  }
+}
+
+message VideoFPS
+{
+  enum Enum
+  {
+    NONE = 0;
+    _30 = 1;
+    _60 = 2;
+  }
+}
+
+message VideoResolution
+{
+  enum Enum
+  {
+    NONE = 0;
+    _480p = 1;
+    _720p = 2;
+    _1080p = 3;
+  }
+}
+
+
+message AbsoluteInputEvent
+{
+  uint32 scan_code = 1;
+  int32 value = 2;
+}
+
+message AbsoluteInputEvents
+{
+  repeated AbsoluteInputEvent absolute_input_events = 1;
+}
+
+message Accel
+{
+  int32 acceleration_x = 1;
+  int32 acceleration_y = 2;
+  int32 acceleration_z = 3;
+}
+
+message AudioConfig
+{
+  uint32 sample_rate = 1;
+  uint32 bit_depth = 2;
+  uint32 channel_count = 3;
+}
+
+message AudioFocusRequest
+{
+  AudioFocusType.Enum audio_focus_type = 1;
+}
+
+message AudioFocusResponse
+{
+  AudioFocusState.Enum audio_focus_state = 1;
+}
+
+message AuthCompleteIndication
+{
+  Status.Enum status = 1;
+}
+
+message AVChannel
+{
+  AVStreamType.Enum stream_type = 1;
+  AudioType.Enum audio_type = 2;
+  repeated AudioConfig audio_configs = 3;
+  repeated VideoConfig video_configs = 4;
+  bool available_while_in_call = 5;
+}
+
+message AVChannelSetupRequest
+{
+  uint32 config_index = 1;
+}
+
+message AVChannelSetupResponse
+{
+  AVChannelSetupStatus.Enum media_status = 1;
+  uint32 max_unacked = 2;
+  repeated uint32 configs = 3;
+}
+
+message AVChannelStartIndication
+{
+  int32 session = 1;
+  uint32 config = 2;
+}
+
+message AVChannelStopIndication
+{
+}
+
+message AVInputChannel
+{
+  AVStreamType.Enum stream_type = 1;
+  AudioConfig audio_config = 2;
+  bool available_while_in_call = 3;
+}
+
+message AVInputOpenRequest
+{
+  bool open = 1;
+  bool anc = 2;
+  bool ec = 3;
+  int32 max_unacked = 4;
+}
+
+message AVInputOpenResponse
+{
+  int32 session = 1;
+  uint32 value = 2;
+}
+
+message AVMediaAckIndication
+{
+  int32 session = 1;
+  uint32 value = 2;
+}
+
+message BindingRequest
+{
+  repeated int32 scan_codes = 1;
+}
+
+message BindingResponse
+{
+  Status.Enum status = 1;
+}
+
+message BluetoothChannel
+{
+  string adapter_address = 1;
+  BluetoothPairingMethod.Enum supported_pairing_methods = 2;
+}
+
+message BluetoothPairingRequest
+{
+  string phone_address = 1;
+  BluetoothPairingMethod.Enum pairing_method = 2;
+}
+
+message BluetoothPairingResponse
+{
+  bool already_paired = 1;
+  BluetoothPairingStatus.Enum status = 2;
+}
+
+message ButtonEvent
+{
+  uint32 scan_code = 1;
+  bool is_pressed = 2;
+  uint32 meta = 3;
+  bool long_press = 4;
+}
+
+message ButtonEvents
+{
+  repeated ButtonEvent button_events = 1;
+}
+
+message ChannelDescriptor
+{
+  uint32 channel_id = 1;
+  SensorChannel sensor_channel = 2;
+  AVChannel av_channel = 3;
+  InputChannel input_channel = 4;
+  AVInputChannel av_input_channel = 5;
+  BluetoothChannel bluetooth_channel = 6;
+  NavigationChannel navigation_channel = 8;
+  VendorExtensionChannel vendor_extension_channel = 12;
+}
+
+message ChannelOpenRequest
+{
+  int32 priority = 1;
+  int32 channel_id = 2;
+}
+
+message ChannelOpenResponse
+{
+  Status.Enum status = 1;
+}
+
+message Compass
+{
+  int32 bearing =1;
+  int32 pitch = 2;
+  int32 roll = 3;
+}
+
+message Diagnostics
+{
+  bytes diagnostics = 1;
+}
+
+message Door
+{
+  bool hood_open = 1;
+  bool boot_open = 2;
+  repeated bool door_open = 3;
+}
+
+message Environment
+{
+  int32 temperature =1;
+  int32 pressure = 2;
+  int32 rain = 3;
+}
+
+message FuelLevel
+{
+  int32 fuel_level = 1;
+  int32 range = 2;
+  bool low_fuel = 3;
+}
+
+message GPSLocation
+{
+  uint64 timestamp = 1;
+  int32 latitude = 2;
+  int32 longitude = 3;
+  uint32 accuracy = 4;
+  int32 altitude = 5;
+  int32 speed = 6;
+  int32 bearing = 7;
+}
+
+message Gyro
+{
+  int32 rotation_speed_x = 1;
+  int32 rotation_speed_y = 2;
+  int32 rotation_speed_z = 3;
+}
+
+message HVAC
+{
+  int32 target_temperature = 1;
+  int32 current_temperature = 2;
+}
+
+message InputChannel
+{
+  repeated uint32 supported_keycodes = 1;
+  TouchConfig touch_screen_config = 2;
+  TouchConfig touch_pad_config = 3;
+}
+
+message InputEventIndication
+{
+  uint64 timestamp = 1;
+  int32 disp_channel = 2;
+  TouchEvent touch_event = 3;
+  ButtonEvents button_event = 4;
+  AbsoluteInputEvents absolute_input_event = 5;
+  RelativeInputEvents relative_input_event = 6;
+}
+
+message Light
+{
+  HeadlightStatus.Enum headlight = 1;
+  IndicatorStatus.Enum indicator = 2;
+  bool hazard_light_on = 3;
+}
+
+message NavigationChannel
+{
+  uint32 minimum_interval_ms = 1;
+  uint32 type = 2;
+  NavigationImageOptions image_options = 3;
+}
+
+message NavigationFocusRequest
+{
+  uint32 type = 1;
+}
+
+message NavigationFocusResponse
+{
+  uint32 type = 1;
+}
+
+message NavigationImageOptions
+{
+  int32 width = 1;
+  int32 height = 2;
+  int32 colour_depth_bits = 3;
+}
+
+message NightMode
+{
+  bool is_night = 1;
+}
+
+message Odometer
+{
+  int32 total_mileage = 1;
+  int32 trip_mileage = 2;
+}
+
+message ParkingBrake
+{
+  bool parking_brake = 1;
+}
+
+message Passenger
+{
+  bool passenger_present = 1;
+}
+
+message PingRequest
+{
+  int64 timestamp = 1;
+}
+
+message PingResponse
+{
+  int64 timestamp = 1;
+}
+
+message RelativeInputEvent
+{
+  uint32 scan_code = 1;
+  int32 delta = 2;
+}
+
+message RelativeInputEvents
+{
+  repeated RelativeInputEvent relative_input_events = 1;
+}
+
+message RPM
+{
+  int32 rpm = 1;
+}
+
+message SensorChannel
+{
+  repeated Sensor sensors = 1;
+}
+
+message Sensor
+{
+  SensorType.Enum type = 1;
+}
+
+message SensorEventIndication
+{
+  repeated GPSLocation gps_location = 1;
+  repeated Compass compass = 2;
+  repeated Speed speed = 3;
+  repeated RPM rpm = 4;
+  repeated Odometer odometer = 5;
+  repeated FuelLevel fuel_level = 6;
+  repeated ParkingBrake parking_brake = 7;
+  repeated Gear gear = 8;
+  repeated Diagnostics diagnostics = 9;
+  repeated NightMode night_mode = 10;
+  repeated Environment environment = 11;
+  repeated HVAC hvac = 12;
+  repeated DrivingStatus driving_status = 13;
+  repeated SteeringWheel steering_wheel = 14;
+  repeated Passenger passenger = 15;
+  repeated Door door = 16;
+  repeated Light light = 17;
+  repeated Accel accel = 19;
+  repeated Gyro gyro = 20;
+}
+
+message SensorStartRequestMessage
+{
+  SensorType.Enum sensor_type = 1;
+  int64 refresh_interval = 2;
+}
+
+message SensorStartResponseMessage
+{
+  Status.Enum status = 1;
+}
+
+message ServiceDiscoveryRequest
+{
+  string device_name = 4;
+  string device_brand = 5;
+}
+
+message ServiceDiscoveryResponse
+{
+  repeated ChannelDescriptor channels = 1;
+  string head_unit_name = 2;
+  string car_model = 3;
+  string car_year = 4;
+  string car_serial = 5;
+  bool left_hand_drive_vehicle = 6;
+  string headunit_manufacturer = 7;
+  string headunit_model = 8;
+  string sw_build = 9;
+  string sw_version = 10;
+  bool can_play_native_media_during_vr = 11;
+  bool hide_clock = 12;
+}
+
+message ShutdownRequest
+{
+  ShutdownReason.Enum reason = 1;
+}
+
+message ShutdownResponse
+{
+}
+
+message Speed
+{
+  int32 speed = 1;
+  bool cruise_engaged = 2;
+  bool cruise_set_speed = 3;
+}
+
+message SteeringWheel
+{
+  int32 steering_angle = 1;
+  int32 wheel_speed = 2;
+}
+
+message TouchConfig
+{
+  uint32 width = 1;
+  uint32 height = 2;
+}
+
+message TouchEvent
+{
+  repeated TouchLocation touch_location = 1;
+  uint32 action_index = 2;
+  TouchAction.Enum touch_action = 3;
+}
+
+message TouchLocation
+{
+  uint32 x = 1;
+  uint32 y = 2;
+  uint32 pointer_id = 3;
+}
+
+message VendorExtensionChannel
+{
+  string name = 1;
+  repeated string package_white_list = 2;
+  bytes data = 3;
+}
+
+message VideoConfig
+{
+  VideoResolution.Enum video_resolution = 1;
+  VideoFPS.Enum video_fps = 2;
+  uint32 margin_width = 3;
+  uint32 margin_height = 4;
+  uint32 dpi = 5;
+  uint32 additional_depth = 6;
+}
+
+message VideoFocusIndication
+{
+  VideoFocusMode.Enum focus_mode = 1;
+  bool unrequested = 2;
+}
+
+message VideoFocusRequest
+{
+  int32 disp_index = 1;
+  VideoFocusMode.Enum focus_mode = 2;
+  VideoFocusReason.Enum focus_reason = 3;
+}
