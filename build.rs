@@ -1,5 +1,7 @@
 
 fn main() {
-    prost_build::compile_protos(&["protos/android.auto.proto"],
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-changed=protos/android_auto.proto");
+    prost_build::compile_protos(&["protos/android_auto.proto"],
                                 &["protos/"]).unwrap();
 }

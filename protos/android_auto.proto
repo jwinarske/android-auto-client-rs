@@ -1,99 +1,42 @@
 syntax = "proto3";
 
-package android.auto.proto;
-
-message AudioFocusState
-{
-  enum Enum
-  {
-    NONE = 0;
-    GAIN = 1;
-    GAIN_TRANSIENT = 2;
-    LOSS = 3;
-    LOSS_TRANSIENT_CAN_DUCK = 4;
-    LOSS_TRANSIENT = 5;
-    GAIN_MEDIA_ONLY = 6;
-    GAIN_TRANSIENT_GUIDANCE_ONLY = 7;
-  }
-}
-
-message AudioFocusType
-{
-  enum Enum
-  {
-    NONE = 0;
-    GAIN = 1;
-    GAIN_TRANSIENT = 2;
-    GAIN_NAVI = 3;
-    RELEASE = 4;
-  }
-}
-
-message AudioType
-{
-  enum Enum
-  {
-    NONE = 0;
-    SPEECH = 1;
-    SYSTEM = 2;
-    MEDIA = 3;
-    ALARM = 4;
-  }
-}
-
-message AVChannelMessage
-{
-  enum Enum
-  {
-    AV_MEDIA_WITH_TIMESTAMP_INDICATION = 0x0000;
-    AV_MEDIA_INDICATION = 0x0001;
-    SETUP_REQUEST = 0x8000;
-    START_INDICATION = 0x8001;
-    STOP_INDICATION = 0x8002;
-    SETUP_RESPONSE = 0x8003;
-    AV_MEDIA_ACK_INDICATION = 0x8004;
-    AV_INPUT_OPEN_REQUEST = 0x8005;
-    AV_INPUT_OPEN_RESPONSE = 0x8006;
-    VIDEO_FOCUS_REQUEST = 0x8007;
-    VIDEO_FOCUS_INDICATION = 0x8008;
-  }
-}
-
-message AVChannelSetupStatus
-{
-  enum Enum
-  {
-    NONE = 0;
-    FAIL = 1;
-    OK = 2;
-  }
-}
+package android_auto_proto;
 
 message AVStreamType
 {
-  enum Enum
-  {
+  enum Enum {
     NONE = 0;
     AUDIO = 1;
     VIDEO = 3;
   }
 }
 
-message BluetoothChannelMessage
+enum AVChannelMessage
 {
-  enum Enum
-  {
-    NONE = 0x0000;
-    PAIRING_REQUEST = 0x8001;
-    PAIRING_RESPONSE = 0x8002;
-    AUTH_DATA = 0x8003;
-  }
+  AV_CH_MSG_MEDIA_WITH_TIMESTAMP_INDICATION = 0x0000;
+  AV_CH_MSG_MEDIA_INDICATION = 0x0001;
+  AV_CH_MSG_SETUP_REQUEST = 0x8000;
+  AV_CH_MSG_START_INDICATION = 0x8001;
+  AV_CH_MSG_STOP_INDICATION = 0x8002;
+  AV_CH_MSG_SETUP_RESPONSE = 0x8003;
+  AV_CH_MSG_MEDIA_ACK_INDICATION = 0x8004;
+  AV_CH_MSG_INPUT_OPEN_REQUEST = 0x8005;
+  AV_CH_MSG_INPUT_OPEN_RESPONSE = 0x8006;
+  AV_CH_MSG_VIDEO_FOCUS_REQUEST = 0x8007;
+  AV_CH_MSG_VIDEO_FOCUS_INDICATION = 0x8008;
+}
+
+enum BluetoothChannelMessage
+{
+  BT_CH_MSG_NONE = 0x0000;
+  BT_CH_MSG_PAIRING_REQUEST = 0x8001;
+  BT_CH_MSG_PAIRING_RESPONSE = 0x8002;
+  BT_CH_MSG_AUTH_DATA = 0x8003;
 }
 
 message BluetoothPairingMethod
 {
-  enum Enum
-  {
+  enum Enum {
     NONE = 0;
     UNK_1 = 1;
     A2DP = 2;
@@ -102,65 +45,49 @@ message BluetoothPairingMethod
   }
 }
 
-message BluetoothPairingStatus
+enum ButtonCode
 {
-  enum Enum
-  {
-    NONE = 0;
-    OK = 1;
-    FAIL = 2;
-  }
+  BTN_NONE = 0x00;
+  BTN_MICROPHONE_2 = 0x01;
+  BTN_MENU = 0x02;
+  BTN_HOME = 0x03;
+  BTN_BACK = 0x04;
+  BTN_PHONE = 0x05;
+  BTN_CALL_END = 0x06;
+  BTN_UP = 0x13;
+  BTN_DOWN = 0x14;
+  BTN_LEFT = 0x15;
+  BTN_RIGHT = 0x16;
+  BTN_ENTER = 0x17;
+  BTN_MICROPHONE_1 = 0x54;
+  BTN_TOGGLE_PLAY = 0x55;
+  BTN_NEXT = 0x57;
+  BTN_PREV = 0x58;
+  BTN_PLAY = 0x7E;
+  BTN_PAUSE = 0x7F;
+  BTN_SCROLL_WHEEL = 65536;
 }
 
-message ButtonCode
+enum ControlMessage
 {
-  enum Enum
-  {
-    NONE = 0x00;
-    MICROPHONE_2 = 0x01;
-    MENU = 0x02;
-    HOME = 0x03;
-    BACK = 0x04;
-    PHONE = 0x05;
-    CALL_END = 0x06;
-    UP = 0x13;
-    DOWN = 0x14;
-    LEFT = 0x15;
-    RIGHT = 0x16;
-    ENTER = 0x17;
-    MICROPHONE_1 = 0x54;
-    TOGGLE_PLAY = 0x55;
-    NEXT = 0x57;
-    PREV = 0x58;
-    PLAY = 0x7E;
-    PAUSE = 0x7F;
-    SCROLL_WHEEL = 65536;
-  }
-}
-
-message ControlMessage
-{
-  enum Enum
-  {
-    NONE = 0x0000;
-    VERSION_REQUEST = 0x0001;
-    VERSION_RESPONSE = 0x0002;
-    SSL_HANDSHAKE = 0x0003;
-    AUTH_COMPLETE = 0x0004;
-    SERVICE_DISCOVERY_REQUEST = 0x0005;
-    SERVICE_DISCOVERY_RESPONSE = 0x0006;
-    CHANNEL_OPEN_REQUEST = 0x0007;
-    CHANNEL_OPEN_RESPONSE = 0x0008;
-    PING_REQUEST = 0x000b;
-    PING_RESPONSE = 0x000c;
-    NAVIGATION_FOCUS_REQUEST = 0x000d;
-    NAVIGATION_FOCUS_RESPONSE = 0x000e;
-    SHUTDOWN_REQUEST = 0x000f;
-    SHUTDOWN_RESPONSE = 0x0010;
-    VOICE_SESSION_REQUEST = 0x0011;
-    AUDIO_FOCUS_REQUEST = 0x0012;
-    AUDIO_FOCUS_RESPONSE = 0x0013;
-  }
+  CTL_MSG_NONE = 0x0000;
+  CTL_MSG_VERSION_REQUEST = 0x0001;
+  CTL_MSG_VERSION_RESPONSE = 0x0002;
+  CTL_MSG_SSL_HANDSHAKE = 0x0003;
+  CTL_MSG_AUTH_COMPLETE = 0x0004;
+  CTL_MSG_SERVICE_DISCOVERY_REQUEST = 0x0005;
+  CTL_MSG_SERVICE_DISCOVERY_RESPONSE = 0x0006;
+  CTL_MSG_CHANNEL_OPEN_REQUEST = 0x0007;
+  CTL_MSG_CHANNEL_OPEN_RESPONSE = 0x0008;
+  CTL_MSG_PING_REQUEST = 0x000b;
+  CTL_MSG_PING_RESPONSE = 0x000c;
+  CTL_MSG_NAVIGATION_FOCUS_REQUEST = 0x000d;
+  CTL_MSG_NAVIGATION_FOCUS_RESPONSE = 0x000e;
+  CTL_MSG_SHUTDOWN_REQUEST = 0x000f;
+  CTL_MSG_SHUTDOWN_RESPONSE = 0x0010;
+  CTL_MSG_VOICE_SESSION_REQUEST = 0x0011;
+  CTL_MSG_AUDIO_FOCUS_REQUEST = 0x0012;
+  CTL_MSG_AUDIO_FOCUS_RESPONSE = 0x0013;
 }
 
 message DrivingStatus
@@ -346,13 +273,12 @@ message VideoResolution
 {
   enum Enum
   {
-    NONE = 0;
+    RES_NONE = 0;
     RES_480p = 1;
     RES_720p = 2;
     RES_1080p = 3;
   }
 }
-
 
 message AbsoluteInputEvent
 {
@@ -381,12 +307,33 @@ message AudioConfig
 
 message AudioFocusRequest
 {
-  AudioFocusType.Enum audio_focus_type = 1;
+  enum Type
+  {
+    NONE = 0;
+    GAIN = 1;
+    GAIN_TRANSIENT = 2;
+    GAIN_NAVI = 3;
+    RELEASE = 4;
+  }
+
+  Type audio_focus_type = 1;
 }
 
 message AudioFocusResponse
 {
-  AudioFocusState.Enum audio_focus_state = 1;
+  enum State
+  {
+    NONE = 0;
+    GAIN = 1;
+    GAIN_TRANSIENT = 2;
+    LOSS = 3;
+    LOSS_TRANSIENT_CAN_DUCK = 4;
+    LOSS_TRANSIENT = 5;
+    GAIN_MEDIA_ONLY = 6;
+    GAIN_TRANSIENT_GUIDANCE_ONLY = 7;
+  }
+
+  State audio_focus_state = 1;
 }
 
 message AuthCompleteIndication
@@ -397,7 +344,17 @@ message AuthCompleteIndication
 message AVChannel
 {
   AVStreamType.Enum stream_type = 1;
-  AudioType.Enum audio_type = 2;
+
+  enum AudioType
+  {
+    NONE = 0;
+    SPEECH = 1;
+    SYSTEM = 2;
+    MEDIA = 3;
+    ALARM = 4;
+  }
+  AudioType audio_type = 2;
+
   repeated AudioConfig audio_configs = 3;
   repeated VideoConfig video_configs = 4;
   bool available_while_in_call = 5;
@@ -410,7 +367,13 @@ message AVChannelSetupRequest
 
 message AVChannelSetupResponse
 {
-  AVChannelSetupStatus.Enum media_status = 1;
+  enum Status
+  {
+    NONE = 0;
+    FAIL = 1;
+    OK = 2;
+  }
+  Status media_status = 1;
   uint32 max_unacked = 2;
   repeated uint32 configs = 3;
 }
@@ -419,10 +382,6 @@ message AVChannelStartIndication
 {
   int32 session = 1;
   uint32 config = 2;
-}
-
-message AVChannelStopIndication
-{
 }
 
 message AVInputChannel
@@ -477,7 +436,13 @@ message BluetoothPairingRequest
 message BluetoothPairingResponse
 {
   bool already_paired = 1;
-  BluetoothPairingStatus.Enum status = 2;
+  enum BluetoothPairingStatus
+  {
+    NONE = 0;
+    OK = 1;
+    FAIL = 2;
+  }
+  BluetoothPairingStatus status = 2;
 }
 
 message ButtonEvent
@@ -518,7 +483,7 @@ message ChannelOpenResponse
 
 message Compass
 {
-  int32 bearing =1;
+  int32 bearing = 1;
   int32 pitch = 2;
   int32 roll = 3;
 }
@@ -537,7 +502,7 @@ message Door
 
 message Environment
 {
-  int32 temperature =1;
+  int32 temperature = 1;
   int32 pressure = 2;
   int32 rain = 3;
 }
@@ -737,10 +702,6 @@ message ServiceDiscoveryResponse
 message ShutdownRequest
 {
   ShutdownReason.Enum reason = 1;
-}
-
-message ShutdownResponse
-{
 }
 
 message Speed
